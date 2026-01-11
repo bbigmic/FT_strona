@@ -393,7 +393,7 @@ export default function Services() {
                 {!isInquirySuccess ? (
                   <form
                     noValidate
-                    onSubmit={(e) => {
+                    onSubmit={async (e) => {
                       e.preventDefault();
                       if (isSubmittingInquiry) return;
                       
@@ -413,7 +413,32 @@ export default function Services() {
                       if (Object.keys(newErrors).length > 0) return;
 
                       setIsSubmittingInquiry(true);
-                      setTimeout(() => {
+                      
+                      try {
+                        const response = await fetch('/api/leads', {
+                          method: 'POST',
+                          headers: {
+                            'Content-Type': 'application/json',
+                          },
+                          body: JSON.stringify({
+                            name: inquiryForm.company,
+                            contact: inquiryForm.name,
+                            email: inquiryForm.email,
+                            phone: inquiryForm.phone,
+                            company: inquiryForm.company,
+                            source: 'USŁUGI',
+                            value: 'Do wyceny',
+                            details: `Wiadomość: ${inquiryForm.message}`,
+                            callDetails: 'Oczekuje na kontakt',
+                            product: inquiryForm.product,
+                          }),
+                        });
+
+                        if (!response.ok) {
+                          throw new Error('Failed to submit inquiry');
+                        }
+
+                        // Opcjonalnie: dodaj do lokalnego contextu (jeśli potrzebne)
                         addLead({
                           name: inquiryForm.company,
                           contact: inquiryForm.name,
@@ -426,9 +451,14 @@ export default function Services() {
                           callDetails: "Oczekuje na kontakt",
                           product: inquiryForm.product
                         });
+                        
                         setIsSubmittingInquiry(false);
                         setIsInquirySuccess(true);
-                      }, 1200);
+                      } catch (error) {
+                        console.error('Error submitting inquiry:', error);
+                        setIsSubmittingInquiry(false);
+                        alert('Wystąpił błąd podczas wysyłania zapytania. Spróbuj ponownie.');
+                      }
                     }}
                     className="space-y-6"
                   >

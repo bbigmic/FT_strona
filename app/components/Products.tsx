@@ -91,7 +91,7 @@ export default function Products() {
                 className="h-full"
               >
                 <div className="group h-full relative bg-[#111] rounded-3xl p-1 overflow-hidden border border-white/5 hover:border-white/10 transition-colors">
-                  <div className={`absolute inset-0 bg-gradient-to-b ${products[currentIndex].gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+                  <div className={`absolute inset-0 bg-gradient-to-b ${products[currentIndex].gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none`} />
                   
                   <div className="bg-black/50 rounded-[22px] h-full p-8 md:p-12 flex flex-col relative z-10 backdrop-blur-sm">
                     <div className="mb-8 p-4 bg-white/5 w-fit rounded-2xl border border-white/5 group-hover:scale-110 transition-transform duration-500">
@@ -383,7 +383,7 @@ export default function Products() {
                                 <ChevronLeft className="w-4 h-4" /> {t.booking.back}
                             </button>
                             <button
-                                onClick={() => {
+                                onClick={async () => {
                                     if (isSubmittingBooking) return;
                                     
                                     const newErrors: { [key: string]: string } = {};
@@ -401,11 +401,64 @@ export default function Products() {
                                     if (Object.keys(newErrors).length > 0) return;
                                     
                                     setIsSubmittingBooking(true);
-                                    // Simulate API call
-                                    setTimeout(() => {
+                                    
+                                    try {
+                                        // Konwersja daty z formatu "7 sty" na format "YYYY-MM-DD"
+                                        const parseDate = (dateStr: string): string => {
+                                            if (!dateStr) return new Date().toISOString().split('T')[0];
+                                            // Jeśli data jest już w formacie YYYY-MM-DD, zwróć ją
+                                            if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return dateStr;
+                                            
+                                            // W przeciwnym razie spróbuj sparsować
+                                            const today = new Date();
+                                            const parts = dateStr.split(' ');
+                                            if (parts.length === 2) {
+                                                const day = parseInt(parts[0]);
+                                                const monthNames = ['sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie', 'wrz', 'paź', 'lis', 'gru'];
+                                                const month = monthNames.indexOf(parts[1].toLowerCase());
+                                                if (month !== -1 && day) {
+                                                    const year = today.getFullYear();
+                                                    const date = new Date(year, month, day);
+                                                    // Jeśli data jest w przeszłości, użyj następnego roku
+                                                    if (date < today) {
+                                                        date.setFullYear(year + 1);
+                                                    }
+                                                    return date.toISOString().split('T')[0];
+                                                }
+                                            }
+                                            return new Date().toISOString().split('T')[0];
+                                        };
+
+                                        const response = await fetch('/api/leads', {
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                            },
+                                            body: JSON.stringify({
+                                                name: bookingForm.company,
+                                                contact: bookingForm.name,
+                                                email: bookingForm.email,
+                                                phone: bookingForm.phone,
+                                                company: bookingForm.company,
+                                                source: 'DEMO',
+                                                value: 'Do wyceny',
+                                                details: `Rezerwacja: ${parseDate(selectedDate || '')}, ${selectedTime || ''}`,
+                                                callDetails: 'Oczekuje na kontakt',
+                                                product: products[currentIndex]?.title || 'Demo',
+                                            }),
+                                        });
+
+                                        if (!response.ok) {
+                                            throw new Error('Failed to submit booking');
+                                        }
+
                                         setIsSubmittingBooking(false);
                                         setBookingStep(3);
-                                    }, 1000);
+                                    } catch (error) {
+                                        console.error('Error submitting booking:', error);
+                                        setIsSubmittingBooking(false);
+                                        alert('Wystąpił błąd podczas rezerwacji. Spróbuj ponownie.');
+                                    }
                                 }}
                                 disabled={isSubmittingBooking}
                                 className="px-6 py-3 bg-accent text-black font-mono font-bold rounded-lg hover:bg-accent/90 transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"

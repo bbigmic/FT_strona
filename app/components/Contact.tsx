@@ -9,14 +9,39 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+    
+    try {
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formState.company || formState.name,
+          contact: formState.name,
+          email: formState.email,
+          phone: formState.phone,
+          company: formState.company || formState.name,
+          source: 'KONTAKT',
+          details: 'Brak dodatkowych informacji',
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
+
       setIsSubmitting(false);
       setIsSuccess(true);
       setFormState({ name: "", email: "", phone: "", company: "" });
-    }, 1500);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setIsSubmitting(false);
+      alert('Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.');
+    }
   };
 
   return (
@@ -78,7 +103,7 @@ export default function Contact() {
               transition={{ delay: 0.2 }}
               className="bg-[#111] p-8 md:p-12 rounded-3xl border border-white/5 relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 p-4 opacity-5">
+              <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
                 <Send className="w-24 h-24" />
               </div>
 
