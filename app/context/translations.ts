@@ -16,8 +16,8 @@ export const translations = {
       building_digital: "TWORZENIE CYFROWYCH",
       products_brands: "PRODUKTÓW, MAREK I DOŚWIADCZEŃ",
       latest_shots: "OSTATNIE REALIZACJE",
-      headline_primary: "Inteligencja.",
-      headline_secondary: "Zautomatyzowana."
+      headline_primary: "INTELIGENCJA.",
+      headline_secondary: "ZAUTOMATYZOWANA."
       ,tagline: "Budujemy autonomiczne systemy, które pracują za Ciebie."
     },
     products: {
