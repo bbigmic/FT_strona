@@ -47,7 +47,7 @@ export default function Navbar() {
     handleScroll();
     
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [navLinks]);
 
   return (
     <>
@@ -174,7 +174,7 @@ export default function Navbar() {
               <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#22c55e 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
               
               <div className="relative z-10 flex flex-col space-y-2">
-                <div className="text-xs font-mono text-gray-500 mb-4 px-4">/// NAVIGATION_MENU</div>
+                <div className="text-xs font-mono text-gray-500 mb-4 px-4">{/* /// NAVIGATION_MENU */}NAVIGATION_MENU</div>
                 {navLinks.map((link, i) => (
                   <Link
                     key={link.name}

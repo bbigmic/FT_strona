@@ -190,7 +190,7 @@ export default function Contact() {
                     
                     <p className="text-gray-300 mb-2 text-lg">Zgłoszenie zarejestrowane.</p>
                     <p className="text-gray-500 text-sm mb-8 max-w-xs mx-auto">
-                      Dziękujemy za kontakt. Nasz zespół przeanalizuje Twój "payload" i odpowie w ciągu 24h.
+                      Dziękujemy za kontakt. Nasz zespół przeanalizuje Twój &quot;payload&quot; i odpowie w ciągu 24h.
                     </p>
                     
                     <button
