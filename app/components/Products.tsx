@@ -293,6 +293,7 @@ export default function Products() {
                                 <div className={`bg-black border rounded-lg p-3 transition-colors ${bookingErrors.name ? 'border-red-500/50 bg-red-500/5' : 'border-white/10'}`}>
                                     <input 
                                         type="text" 
+                                        autoComplete="name"
                                         value={bookingForm.name}
                                         onChange={(e) => {
                                             setBookingForm({ ...bookingForm, name: e.target.value });
@@ -314,6 +315,7 @@ export default function Products() {
                                 <div className={`bg-black border rounded-lg p-3 transition-colors ${bookingErrors.company ? 'border-red-500/50 bg-red-500/5' : 'border-white/10'}`}>
                                     <input 
                                         type="text" 
+                                        autoComplete="organization"
                                         value={bookingForm.company}
                                         onChange={(e) => {
                                             setBookingForm({ ...bookingForm, company: e.target.value });
@@ -335,6 +337,7 @@ export default function Products() {
                                 <div className={`bg-black border rounded-lg p-3 transition-colors ${bookingErrors.email ? 'border-red-500/50 bg-red-500/5' : 'border-white/10'}`}>
                                     <input 
                                         type="email" 
+                                        autoComplete="email"
                                         value={bookingForm.email}
                                         onChange={(e) => {
                                             setBookingForm({ ...bookingForm, email: e.target.value });
@@ -356,6 +359,7 @@ export default function Products() {
                                 <div className={`bg-black border rounded-lg p-3 transition-colors ${bookingErrors.phone ? 'border-red-500/50 bg-red-500/5' : 'border-white/10'}`}>
                                     <input 
                                         type="tel" 
+                                        autoComplete="tel"
                                         value={bookingForm.phone}
                                         onChange={(e) => {
                                             setBookingForm({ ...bookingForm, phone: e.target.value });

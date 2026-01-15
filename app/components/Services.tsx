@@ -469,6 +469,7 @@ export default function Services() {
                           <User className={`w-4 h-4 ${errors.name ? 'text-red-500' : 'text-gray-500'}`} />
                           <input
                             type="text"
+                            autoComplete="name"
                             value={inquiryForm.name}
                             onChange={(e) => {
                               setInquiryForm({ ...inquiryForm, name: e.target.value });
@@ -491,6 +492,7 @@ export default function Services() {
                           <Mail className={`w-4 h-4 ${errors.email ? 'text-red-500' : 'text-gray-500'}`} />
                           <input
                             type="email"
+                            autoComplete="email"
                             value={inquiryForm.email}
                             onChange={(e) => {
                               setInquiryForm({ ...inquiryForm, email: e.target.value });
@@ -513,6 +515,7 @@ export default function Services() {
                           <Phone className={`w-4 h-4 ${errors.phone ? 'text-red-500' : 'text-gray-500'}`} />
                           <input
                             type="tel"
+                            autoComplete="tel"
                             value={inquiryForm.phone}
                             onChange={(e) => {
                               setInquiryForm({ ...inquiryForm, phone: e.target.value });
@@ -535,6 +538,7 @@ export default function Services() {
                           <Building2 className={`w-4 h-4 ${errors.company ? 'text-red-500' : 'text-gray-500'}`} />
                           <input
                             type="text"
+                            autoComplete="organization"
                             value={inquiryForm.company}
                             onChange={(e) => {
                               setInquiryForm({ ...inquiryForm, company: e.target.value });

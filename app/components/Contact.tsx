@@ -113,6 +113,7 @@ export default function Contact() {
                   <input
                     type="text"
                     required
+                    autoComplete="name"
                     value={formState.name}
                     onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                     className="w-full bg-black/50 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder:text-gray-700"
@@ -124,6 +125,7 @@ export default function Contact() {
                   <input
                     type="email"
                     required
+                    autoComplete="email"
                     value={formState.email}
                     onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                     className="w-full bg-black/50 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder:text-gray-700"
@@ -135,6 +137,7 @@ export default function Contact() {
                   <input
                     type="tel"
                     required
+                    autoComplete="tel"
                     value={formState.phone}
                     onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
                     className="w-full bg-black/50 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder:text-gray-700"
@@ -145,6 +148,7 @@ export default function Contact() {
                   <label className="text-xs font-mono text-gray-500 uppercase tracking-widest ml-1">Organization_ID</label>
                   <input
                     type="text"
+                    autoComplete="organization"
                     value={formState.company}
                     onChange={(e) => setFormState({ ...formState, company: e.target.value })}
                     className="w-full bg-black/50 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder:text-gray-700"
