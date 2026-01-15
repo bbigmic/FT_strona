@@ -524,23 +524,23 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col justify-center items-center pt-32 overflow-hidden bg-black">
+    <section id="hero" className="relative min-h-screen flex flex-col justify-center items-center pt-20 sm:pt-24 md:pt-28 overflow-hidden bg-black">
       <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-10 text-center">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center flex-1 flex flex-col justify-center">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
-          className="relative z-10 max-w-4xl mx-auto bg-black/40 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/10 shadow-2xl mb-20"
+          className="relative z-10 max-w-4xl mx-auto bg-black/40 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 border border-white/10 shadow-2xl"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="mb-8"
+            className="mb-6 sm:mb-8"
           >
-            <span className="inline-block px-4 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-gray-300 font-medium tracking-wide backdrop-blur-md">
+            <span className="inline-block px-3 sm:px-4 py-1 rounded-full border border-white/10 bg-white/5 text-[10px] sm:text-xs text-gray-300 font-medium tracking-wide backdrop-blur-md">
               Nowa Generacja Automatyzacji
             </span>
           </motion.div>
@@ -549,7 +549,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-tight select-none drop-shadow-2xl"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white mb-4 sm:mb-6 leading-tight select-none drop-shadow-2xl"
           >
             <span className="relative z-10">{t.hero.headline_primary}</span> <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#00ff41] via-[#00f0ff] to-[#00ff41] bg-[length:200%_auto] animate-gradient">
@@ -561,7 +561,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed font-light"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 mb-8 sm:mb-10 md:mb-12 max-w-2xl mx-auto leading-relaxed font-light px-2"
           >
             {t.hero.tagline}
           </motion.p>
@@ -570,20 +570,20 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col md:flex-row items-center justify-center gap-6"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
           >
             <Link
               href="#contact"
-              className="group px-8 py-4 bg-[#00f0ff] text-black rounded-xl text-lg font-mono font-bold uppercase tracking-widest hover:bg-[#00f0ff]/90 transition-all flex items-center border border-[#00f0ff]/20 shadow-[0_0_20px_rgba(0,240,255,0.3)]"
+              className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-[#00f0ff] text-black rounded-xl text-sm sm:text-base md:text-lg font-mono font-bold uppercase tracking-widest hover:bg-[#00f0ff]/90 transition-all flex items-center justify-center border border-[#00f0ff]/20 shadow-[0_0_20px_rgba(0,240,255,0.3)]"
             >
               Rozpocznij
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               href="#services"
-              className="group px-8 py-4 text-[#00f0ff] rounded-xl text-lg font-mono font-bold uppercase tracking-widest transition-all flex items-center border border-[#00f0ff]/30 bg-black/40 hover:bg-[#00f0ff]/10 hover:shadow-[0_0_20px_rgba(0,240,255,0.2)]"
+              className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-[#00f0ff] rounded-xl text-sm sm:text-base md:text-lg font-mono font-bold uppercase tracking-widest transition-all flex items-center justify-center border border-[#00f0ff]/30 bg-black/40 hover:bg-[#00f0ff]/10 hover:shadow-[0_0_20px_rgba(0,240,255,0.2)]"
             >
-              Poznaj możliwości <ChevronRight className="ml-1 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
+              Poznaj możliwości <ChevronRight className="ml-1 w-4 h-4 sm:w-5 sm:h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
             </Link>
           </motion.div>
         </motion.div>

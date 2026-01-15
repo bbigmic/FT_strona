@@ -43,3 +43,4 @@ npm run dev
 
 Aplikacja będzie dostępna na `http://localhost:3000`
 
+

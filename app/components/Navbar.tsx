@@ -55,37 +55,37 @@ export default function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-4 md:top-6 left-2 right-2 md:left-6 md:right-6 z-50 rounded-2xl border border-white/10 transition-all duration-300 ${
+        className={`fixed top-2 sm:top-4 md:top-6 left-2 right-2 sm:left-4 md:left-6 md:right-6 z-50 rounded-xl sm:rounded-2xl border border-white/10 transition-all duration-300 ${
           scrolled 
             ? "bg-black/80 backdrop-blur-xl shadow-[0_0_20px_rgba(0,0,0,0.5)] border-white/20" 
             : "bg-black/40 backdrop-blur-md"
         }`}
       >
-        <div className="px-4 md:px-6 h-14 flex justify-between items-center relative">
+        <div className="px-3 sm:px-4 md:px-6 h-12 sm:h-14 flex justify-between items-center relative">
           
           {/* Logo Section */}
-          <Link href="/" className="flex items-center space-x-3 text-white group relative z-10">
-            <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-white/5 border border-white/10 group-hover:border-accent/50 transition-colors overflow-hidden">
-              <Terminal className="w-4 h-4 text-gray-400 group-hover:text-accent transition-colors" />
+          <Link href="/" className="flex items-center space-x-2 sm:space-x-3 text-white group relative z-10">
+            <div className="relative flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white/5 border border-white/10 group-hover:border-accent/50 transition-colors overflow-hidden">
+              <Terminal className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 group-hover:text-accent transition-colors" />
               <div className="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
             <div className="flex flex-col">
-              <span className="font-mono text-sm tracking-widest font-bold leading-none">
+              <span className="font-mono text-xs sm:text-sm tracking-widest font-bold leading-none">
                 FELIZ<span className="text-accent">_TRADE</span>
               </span>
-              <span className="text-[9px] text-gray-500 font-mono leading-none mt-1 group-hover:text-accent/80 transition-colors">
+              <span className="text-[8px] sm:text-[9px] text-gray-500 font-mono leading-none mt-0.5 sm:mt-1 group-hover:text-accent/80 transition-colors">
                 {t.navbar.system_ver}
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center absolute left-1/2 -translate-x-1/2 bg-white/5 rounded-full p-1 border border-white/5">
+          <div className="hidden lg:flex items-center absolute left-1/2 -translate-x-1/2 bg-white/5 rounded-full p-1 border border-white/5">
             {navLinks.map((link) => (
               <Link
                 key={link.id}
                 href={link.href}
-                className={`relative px-4 py-1.5 text-xs font-mono transition-colors ${
+                className={`relative px-3 xl:px-4 py-1.5 text-[10px] xl:text-xs font-mono transition-colors ${
                   activeSection === link.id ? "text-accent font-bold" : "text-gray-400 hover:text-white"
                 }`}
                 onMouseEnter={() => setHoveredPath(link.id)}
@@ -106,12 +106,12 @@ export default function Navbar() {
           </div>
 
           {/* Status Indicator (Desktop) */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-3 xl:gap-4">
              {/* Language Selector */}
              <div className="flex items-center bg-black/40 rounded-lg p-1 border border-white/5">
                 <button
                   onClick={() => setLanguage("PL")}
-                  className={`px-2 py-1 text-[10px] font-mono rounded-md transition-all ${
+                  className={`px-2 py-1 text-[9px] xl:text-[10px] font-mono rounded-md transition-all ${
                     language === "PL" 
                       ? "bg-white/10 text-accent font-bold shadow-[0_0_10px_rgba(34,197,94,0.1)]" 
                       : "text-gray-500 hover:text-gray-300"
@@ -122,7 +122,7 @@ export default function Navbar() {
                 <div className="w-[1px] h-3 bg-white/10 mx-1"></div>
                 <button
                   onClick={() => setLanguage("EN")}
-                  className={`px-2 py-1 text-[10px] font-mono rounded-md transition-all ${
+                  className={`px-2 py-1 text-[9px] xl:text-[10px] font-mono rounded-md transition-all ${
                     language === "EN" 
                       ? "bg-white/10 text-accent font-bold shadow-[0_0_10px_rgba(34,197,94,0.1)]" 
                       : "text-gray-500 hover:text-gray-300"
@@ -132,23 +132,23 @@ export default function Navbar() {
                 </button>
              </div>
 
-             <div className="flex items-center space-x-3 bg-black/40 rounded-lg px-3 py-1.5 border border-white/5">
+             <div className="flex items-center space-x-2 xl:space-x-3 bg-black/40 rounded-lg px-2 xl:px-3 py-1.5 border border-white/5">
                 <div className="flex items-center space-x-2">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                   </span>
-                  <span className="text-[10px] font-mono text-gray-400">ONLINE</span>
+                  <span className="text-[9px] xl:text-[10px] font-mono text-gray-400">ONLINE</span>
                 </div>
              </div>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden relative z-10 w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 border border-white/10 text-white active:scale-95 transition-transform"
+            className="lg:hidden relative z-10 w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg bg-white/5 border border-white/10 text-white active:scale-95 transition-transform"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {isOpen ? <X className="w-4 h-4 sm:w-5 sm:h-5" /> : <Menu className="w-4 h-4 sm:w-5 sm:h-5" />}
           </button>
         </div>
       </motion.nav>
@@ -160,7 +160,7 @@ export default function Navbar() {
             initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
             animate={{ opacity: 1, backdropFilter: "blur(12px)" }}
             exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            className="fixed inset-0 z-40 bg-black/60 md:hidden flex items-start justify-center pt-24"
+            className="fixed inset-0 z-40 bg-black/60 lg:hidden flex items-start justify-center pt-20 sm:pt-24"
             onClick={() => setIsOpen(false)}
           >
             <motion.div
@@ -168,7 +168,7 @@ export default function Navbar() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: -20 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-[90%] bg-[#0A0A0A] border border-white/10 rounded-3xl p-6 shadow-2xl relative overflow-hidden"
+              className="w-[90%] max-w-md bg-[#0A0A0A] border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-2xl relative overflow-hidden"
             >
               {/* Decorative grid background */}
               <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#22c55e 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>

@@ -73,23 +73,23 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="services" className="py-16 bg-black relative">
-      <div className="container mx-auto px-6 max-w-7xl">
+    <section id="services" className="py-12 sm:py-16 bg-black relative">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-20 text-center md:text-left"
+          className="mb-12 sm:mb-16 md:mb-20 text-center md:text-left"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-white tracking-tight">
             {t.services.title}<span className="text-accent animate-pulse">.</span>
           </h2>
-          <p className="text-xl text-gray-500 max-w-2xl">
+          <p className="text-lg sm:text-xl text-gray-500 max-w-2xl">
             {t.services.subtitle}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -98,21 +98,21 @@ export default function Services() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               onClick={() => setSelectedService(service)}
-              className={`${service.colSpan} group relative overflow-hidden bg-[#111] rounded-3xl p-8 border border-white/5 hover:bg-[#161616] transition-all duration-500 cursor-pointer hover:border-accent/30`}
+              className={`${service.colSpan === "col-span-1 md:col-span-2" ? "sm:col-span-2" : service.colSpan} group relative overflow-hidden bg-[#111] rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-white/5 hover:bg-[#161616] transition-all duration-500 cursor-pointer hover:border-accent/30`}
             >
-              <div className="absolute top-4 right-4 opacity-20 group-hover:opacity-100 transition-opacity">
-                <Code className="w-5 h-5 text-gray-600 group-hover:text-accent" />
+              <div className="absolute top-3 sm:top-4 right-3 sm:right-4 opacity-20 group-hover:opacity-100 transition-opacity">
+                <Code className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 group-hover:text-accent" />
               </div>
 
-              <div className="mb-8 p-4 bg-white/5 w-fit rounded-2xl text-white group-hover:text-accent transition-colors">
+              <div className="mb-6 sm:mb-8 p-3 sm:p-4 bg-white/5 w-fit rounded-xl sm:rounded-2xl text-white group-hover:text-accent transition-colors">
                 {service.icon}
               </div>
               
-              <h3 className="text-xl font-mono font-bold mb-4 text-white group-hover:text-accent transition-colors">
+              <h3 className="text-lg sm:text-xl font-mono font-bold mb-3 sm:mb-4 text-white group-hover:text-accent transition-colors">
                 {">"} {service.title}
               </h3>
               
-              <p className="text-gray-400 leading-relaxed text-lg">
+              <p className="text-gray-400 leading-relaxed text-base sm:text-lg">
                 {service.description}
               </p>
 
@@ -125,33 +125,33 @@ export default function Services() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="col-span-1 md:col-span-3 bg-[#111] rounded-3xl p-8 md:p-12 border border-white/5 relative overflow-hidden flex flex-col md:flex-row items-center gap-12"
+            className="col-span-1 sm:col-span-2 lg:col-span-3 bg-[#111] rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 border border-white/5 relative overflow-hidden flex flex-col md:flex-row items-center gap-8 sm:gap-12"
           >
-             <div className="flex-1 z-10">
-                <div className="flex items-center space-x-3 mb-6">
-                   <Terminal className="w-6 h-6 text-accent" />
-                   <span className="text-sm font-mono text-accent">{t.services.integration.badge}</span>
+             <div className="flex-1 z-10 w-full">
+                <div className="flex items-center space-x-2 sm:space-x-3 mb-4 sm:mb-6">
+                   <Terminal className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
+                   <span className="text-xs sm:text-sm font-mono text-accent">{t.services.integration.badge}</span>
                 </div>
-                <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">{t.services.integration.title}</h3>
-                <p className="text-gray-400 text-lg mb-8">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">{t.services.integration.title}</h3>
+                <p className="text-gray-400 text-base sm:text-lg mb-6 sm:mb-8">
                   {t.services.integration.description}
                 </p>
                 <button 
                   onClick={() => setShowDocsModal(true)}
-                  className="group flex items-center gap-3 px-5 py-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-accent/50 rounded-xl transition-all duration-300"
+                  className="group w-full sm:w-auto flex items-center gap-2 sm:gap-3 px-4 sm:px-5 py-2.5 sm:py-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-accent/50 rounded-xl transition-all duration-300"
                 >
-                  <div className="p-2 bg-black rounded-lg border border-white/10 group-hover:border-accent/30 transition-colors">
-                    <Code className="w-4 h-4 text-gray-400 group-hover:text-accent" />
+                  <div className="p-1.5 sm:p-2 bg-black rounded-lg border border-white/10 group-hover:border-accent/30 transition-colors">
+                    <Code className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 group-hover:text-accent" />
                   </div>
                   <div className="text-left">
-                    <div className="text-xs text-gray-500 font-mono mb-0.5">{t.services.integration.resources}</div>
-                    <div className="text-sm text-white font-medium group-hover:text-accent transition-colors">{t.services.integration.docs}</div>
+                    <div className="text-[10px] sm:text-xs text-gray-500 font-mono mb-0.5">{t.services.integration.resources}</div>
+                    <div className="text-xs sm:text-sm text-white font-medium group-hover:text-accent transition-colors">{t.services.integration.docs}</div>
                   </div>
                 </button>
              </div>
              
              {/* Abstract Visualization - Live Terminal */}
-             <div className="flex-1 w-full h-56 md:h-72 bg-[#050505] rounded-xl border border-white/10 p-6 font-mono text-xs overflow-hidden relative shadow-2xl">
+             <div className="flex-1 w-full h-48 sm:h-56 md:h-72 bg-[#050505] rounded-xl border border-white/10 p-4 sm:p-6 font-mono text-[10px] sm:text-xs overflow-hidden relative shadow-2xl">
                 {/* Background Grid */}
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-[size:24px_24px] opacity-10 pointer-events-none" />
                 
@@ -195,19 +195,19 @@ export default function Services() {
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              onClick={(e) => e.stopPropagation()}
-              className="bg-[#111] border border-white/10 rounded-2xl w-full max-w-4xl max-h-[80vh] overflow-hidden flex flex-col shadow-2xl"
-            >
-              {/* Modal Header */}
-              <div className="flex items-center justify-between p-6 border-b border-white/10 bg-[#161616]">
-                <div className="flex items-center gap-3">
-                  <Terminal className="w-5 h-5 text-accent" />
-                  <h3 className="text-xl font-bold text-white font-mono">{t.services.docs_modal.title}</h3>
-                </div>
+            onClick={(e) => e.stopPropagation()}
+            className="bg-[#111] border border-white/10 rounded-xl sm:rounded-2xl w-full max-w-4xl max-h-[90vh] sm:max-h-[80vh] overflow-hidden flex flex-col shadow-2xl m-4"
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-4 sm:p-6 border-b border-white/10 bg-[#161616]">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <Terminal className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
+                <h3 className="text-lg sm:text-xl font-bold text-white font-mono">{t.services.docs_modal.title}</h3>
               </div>
+            </div>
 
-              {/* Modal Content */}
-              <div className="p-6 overflow-y-auto font-mono text-sm md:text-base">
+            {/* Modal Content */}
+            <div className="p-4 sm:p-6 overflow-y-auto font-mono text-xs sm:text-sm md:text-base">
                 <div className="space-y-8">
                   {/* Section 1: Introduction */}
                   <div>
@@ -292,34 +292,34 @@ export default function Services() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-[#0A0A0A] border border-white/10 rounded-3xl w-full max-w-3xl overflow-hidden shadow-2xl relative"
+              className="bg-[#0A0A0A] border border-white/10 rounded-2xl sm:rounded-3xl w-full max-w-3xl overflow-hidden shadow-2xl relative m-4 max-h-[90vh] overflow-y-auto"
             >
                {/* Decorative Background */}
                <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#22c55e 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
                
-               <div className="relative p-8 md:p-10">
+               <div className="relative p-6 sm:p-8 md:p-10">
 
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="p-3 bg-white/5 rounded-xl border border-white/10 text-accent">
+                  <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                    <div className="p-2 sm:p-3 bg-white/5 rounded-xl border border-white/10 text-accent">
                       {selectedService.icon}
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-white">{selectedService.details.title}</h3>
-                      <p className="text-sm font-mono text-accent">{selectedService.title}</p>
+                      <h3 className="text-xl sm:text-2xl font-bold text-white">{selectedService.details.title}</h3>
+                      <p className="text-xs sm:text-sm font-mono text-accent">{selectedService.title}</p>
                     </div>
                   </div>
 
-                  <p className="text-gray-300 text-lg leading-relaxed mb-8">
+                  <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
                     {selectedService.details.content}
                   </p>
 
-                  <div className="space-y-4">
-                    <h4 className="text-sm font-mono text-gray-500 uppercase tracking-widest">{t.services.service_modal.features_title}</h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-3 sm:space-y-4">
+                    <h4 className="text-xs sm:text-sm font-mono text-gray-500 uppercase tracking-widest">{t.services.service_modal.features_title}</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                       {selectedService.details.features.map((feature, i) => (
-                        <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white/5 border border-white/5">
-                          <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                          <span className="text-gray-300 text-sm">{feature}</span>
+                        <div key={i} className="flex items-start gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-lg bg-white/5 border border-white/5">
+                          <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-accent shrink-0 mt-0.5" />
+                          <span className="text-gray-300 text-xs sm:text-sm">{feature}</span>
                         </div>
                       ))}
                     </div>
@@ -369,12 +369,12 @@ export default function Services() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-[#111] border border-white/10 rounded-2xl w-full max-w-2xl overflow-hidden flex flex-col shadow-2xl"
+              className="bg-[#111] border border-white/10 rounded-xl sm:rounded-2xl w-full max-w-2xl overflow-hidden flex flex-col shadow-2xl m-4 max-h-[90vh] overflow-y-auto"
             >
-              <div className="flex items-center justify-between p-6 border-b border-white/10 bg-[#161616]">
-                <div className="flex items-center gap-3">
-                  <Send className="w-5 h-5 text-accent" />
-                  <h3 className="text-xl font-bold text-white font-mono">{t.services.inquiry_form.title}</h3>
+              <div className="flex items-center justify-between p-4 sm:p-6 border-b border-white/10 bg-[#161616]">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <Send className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
+                  <h3 className="text-lg sm:text-xl font-bold text-white font-mono">{t.services.inquiry_form.title}</h3>
                 </div>
                 <button
                   onClick={() => {
@@ -383,13 +383,13 @@ export default function Services() {
                     setIsSubmittingInquiry(false);
                     setInquiryForm({ name: "", email: "", phone: "", company: "", message: "", product: "" });
                   }}
-                  className="px-3 py-2 bg-red-500/5 hover:bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 transition-colors"
+                  className="p-2 sm:px-3 sm:py-2 bg-red-500/5 hover:bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 transition-colors"
                 >
-                  <X className="w-4 h-4" />
+                  <X className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </button>
               </div>
 
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 {!isInquirySuccess ? (
                   <form
                     noValidate

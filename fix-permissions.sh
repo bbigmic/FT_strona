@@ -30,3 +30,4 @@ echo "Teraz możesz zapisywać pliki bez problemów."
 
 
 
+

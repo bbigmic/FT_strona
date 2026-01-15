@@ -49,38 +49,38 @@ export default function Products() {
   };
 
   return (
-    <section id="products" className="py-16 bg-black relative">
-      <div className="container mx-auto px-6 max-w-7xl">
+    <section id="products" className="py-12 sm:py-16 bg-black relative">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-20"
+          className="mb-12 sm:mb-16 md:mb-20"
         >
-          <div className="flex items-center gap-2 mb-4">
-            <ShoppingBag className="w-5 h-5 text-accent" />
-            <span className="text-accent font-mono text-sm tracking-widest uppercase">{t.products.available_solutions}</span>
+          <div className="flex items-center gap-2 mb-3 sm:mb-4">
+            <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
+            <span className="text-accent font-mono text-xs sm:text-sm tracking-widest uppercase">{t.products.available_solutions}</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-white tracking-tight">
             {t.products.our} <span className="text-gray-500">{t.products.products}<span className="text-accent animate-pulse">.</span></span>
           </h2>
-          <p className="text-xl text-gray-500 max-w-2xl">
+          <p className="text-lg sm:text-xl text-gray-500 max-w-2xl">
             {t.products.subtitle}
           </p>
         </motion.div>
 
-        <div className="flex items-center justify-center gap-4 md:gap-12">
+        <div className="flex items-center justify-center gap-3 sm:gap-4 md:gap-12">
           {/* Previous Button */}
           <button
             onClick={prevProduct}
-            className="p-4 rounded-full bg-[#111] border border-white/10 text-white hover:bg-white/10 hover:border-accent/50 hover:text-accent transition-all active:scale-95 group hidden md:flex"
+            className="p-3 sm:p-4 rounded-full bg-[#111] border border-white/10 text-white hover:bg-white/10 hover:border-accent/50 hover:text-accent transition-all active:scale-95 group hidden md:flex"
             aria-label="Previous product"
           >
-            <ChevronLeft className="w-8 h-8 group-hover:-translate-x-1 transition-transform" />
+            <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8 group-hover:-translate-x-1 transition-transform" />
           </button>
 
           {/* Product Carousel */}
-          <div className="relative w-full max-w-2xl h-[600px]">
+          <div className="relative w-full max-w-2xl h-[500px] sm:h-[550px] md:h-[600px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
@@ -90,27 +90,26 @@ export default function Products() {
                 transition={{ duration: 0.3 }}
                 className="h-full"
               >
-                <div className="group h-full relative bg-[#111] rounded-3xl p-1 overflow-hidden border border-white/5 hover:border-white/10 transition-colors">
+                <div className="group h-full relative bg-[#111] rounded-2xl sm:rounded-3xl p-1 overflow-hidden border border-white/5 hover:border-white/10 transition-colors">
                   <div className={`absolute inset-0 bg-gradient-to-b ${products[currentIndex].gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none`} />
                   
-                  <div className="bg-black/50 rounded-[22px] h-full p-8 md:p-12 flex flex-col relative z-10 backdrop-blur-sm">
-                    <div className="mb-8 p-4 bg-white/5 w-fit rounded-2xl border border-white/5 group-hover:scale-110 transition-transform duration-500">
+                  <div className="bg-black/50 rounded-[18px] sm:rounded-[22px] h-full p-6 sm:p-8 md:p-12 flex flex-col relative z-10 backdrop-blur-sm">
+                    <div className="mb-6 sm:mb-8 p-3 sm:p-4 bg-white/5 w-fit rounded-xl sm:rounded-2xl border border-white/5 group-hover:scale-110 transition-transform duration-500">
                       {products[currentIndex].icon}
                     </div>
 
-                    <div className="flex justify-between items-start mb-4">
-                        <h3 className="text-3xl font-bold text-white font-mono">{products[currentIndex].title}</h3>
-                        <p className="text-accent font-mono text-lg">{products[currentIndex].price}</p>
+                    <div className="mb-3 sm:mb-4">
+                        <h3 className="text-2xl sm:text-3xl font-bold text-white font-mono">{products[currentIndex].title}</h3>
                     </div>
                     
-                    <p className="text-gray-400 mb-8 leading-relaxed text-lg">
+                    <p className="text-gray-400 mb-6 sm:mb-8 leading-relaxed text-base sm:text-lg">
                       {products[currentIndex].description}
                     </p>
 
-                    <div className="mt-auto space-y-4 mb-8 border-t border-white/5 pt-6">
+                    <div className="mt-auto space-y-3 sm:space-y-4 mb-6 sm:mb-8 border-t border-white/5 pt-4 sm:pt-6">
                       {products[currentIndex].features.map((feature, i) => (
-                        <div key={i} className="flex items-center text-gray-500 font-mono">
-                          <span className="w-1.5 h-1.5 bg-gray-600 rounded-full mr-3 group-hover:bg-accent transition-colors" />
+                        <div key={i} className="flex items-center text-gray-500 font-mono text-sm sm:text-base">
+                          <span className="w-1.5 h-1.5 bg-gray-600 rounded-full mr-2 sm:mr-3 group-hover:bg-accent transition-colors shrink-0" />
                           {feature}
                         </div>
                       ))}
@@ -118,7 +117,7 @@ export default function Products() {
 
                     <button 
                       onClick={() => setShowBookingModal(true)}
-                      className="w-full py-4 bg-black border border-accent/20 text-accent font-mono text-sm tracking-wider uppercase rounded-xl hover:bg-accent/10 hover:border-accent/50 transition-all flex items-center justify-center group/btn shadow-[0_0_20px_-10px_rgba(34,197,94,0.3)]"
+                      className="w-full py-3 sm:py-4 bg-black border border-accent/20 text-accent font-mono text-xs sm:text-sm tracking-wider uppercase rounded-xl hover:bg-accent/10 hover:border-accent/50 transition-all flex items-center justify-center group/btn shadow-[0_0_20px_-10px_rgba(34,197,94,0.3)]"
                     >
                       <span className="mr-2">{">"}</span>
                       <span>{t.products.book_demo}</span>
@@ -186,29 +185,29 @@ export default function Products() {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-[#0a0a0a] border border-white/10 rounded-2xl w-full max-w-2xl overflow-hidden shadow-[0_0_50px_-10px_rgba(0,0,0,0.5)]"
+              className="bg-[#0a0a0a] border border-white/10 rounded-xl sm:rounded-2xl w-full max-w-2xl overflow-hidden shadow-[0_0_50px_-10px_rgba(0,0,0,0.5)] m-4 max-h-[90vh] overflow-y-auto"
             >
-              <div className="flex items-center justify-between p-6 border-b border-white/5 bg-white/5">
-                <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full bg-red-500" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                  <div className="w-3 h-3 rounded-full bg-green-500" />
-                  <span className="ml-4 font-mono text-sm text-gray-400">{t.booking.system_title}</span>
+              <div className="flex items-center justify-between p-4 sm:p-6 border-b border-white/5 bg-white/5">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500" />
+                  <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500" />
+                  <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500" />
+                  <span className="ml-2 sm:ml-4 font-mono text-xs sm:text-sm text-gray-400">{t.booking.system_title}</span>
                 </div>
                 <button 
                   onClick={() => setShowBookingModal(false)}
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
 
-              <div className="p-6 md:p-8">
+              <div className="p-4 sm:p-6 md:p-8">
                 {bookingStep === 1 && (
                   <div className="space-y-6">
                     <div>
-                        <h3 className="text-xl text-white font-mono mb-2 flex items-center gap-2">
-                            <Calendar className="w-5 h-5 text-accent" />
+                        <h3 className="text-lg sm:text-xl text-white font-mono mb-2 flex items-center gap-2">
+                            <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
                             {t.booking.step_1_title}
                         </h3>
                         <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 mt-4">
@@ -224,13 +223,13 @@ export default function Products() {
                                     <button
                                         key={i}
                                         onClick={() => setSelectedDate(dateStr)}
-                                        className={`p-3 rounded-lg border font-mono text-sm transition-all ${
+                                        className={`p-2 sm:p-3 rounded-lg border font-mono text-xs sm:text-sm transition-all ${
                                             isSelected 
                                             ? "bg-accent text-black border-accent" 
                                             : "bg-black border-white/10 text-gray-400 hover:border-accent/50 hover:text-white"
                                         }`}
                                     >
-                                        <div className="opacity-60 text-xs mb-1">{dayName}</div>
+                                        <div className="opacity-60 text-[10px] sm:text-xs mb-1">{dayName}</div>
                                         <div className="font-bold">{dateStr}</div>
                                     </button>
                                 );
@@ -243,8 +242,8 @@ export default function Products() {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                         >
-                            <h3 className="text-xl text-white font-mono mb-2 flex items-center gap-2">
-                                <Clock className="w-5 h-5 text-accent" />
+                            <h3 className="text-lg sm:text-xl text-white font-mono mb-2 flex items-center gap-2">
+                                <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
                                 {t.booking.step_1_time}
                             </h3>
                             <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 mt-4">
@@ -252,10 +251,10 @@ export default function Products() {
                                     <button
                                         key={time}
                                         onClick={() => setSelectedTime(time)}
-                                        className={`p-2 rounded-lg border font-mono text-sm transition-all ${
+                                        className={`p-2 rounded-lg border font-mono text-xs sm:text-sm transition-all ${
                                             selectedTime === time
-                                            ? "bg-accent text-black border-accent"
-                                            : "bg-black border-white/10 text-gray-400 hover:border-accent/50 hover:text-white"
+                                                ? "bg-accent text-black border-accent"
+                                                : "bg-black border-white/10 text-gray-400 hover:border-accent/50 hover:text-white"
                                         }`}
                                     >
                                         {time}
@@ -283,12 +282,12 @@ export default function Products() {
                         animate={{ opacity: 1, x: 0 }}
                         className="space-y-4"
                     >
-                        <h3 className="text-xl text-white font-mono mb-6 flex items-center gap-2">
-                            <User className="w-5 h-5 text-accent" />
+                        <h3 className="text-lg sm:text-xl text-white font-mono mb-4 sm:mb-6 flex items-center gap-2">
+                            <User className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
                             {t.booking.step_2_title}
                         </h3>
                         
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                             <div className="space-y-2">
                                 <label className="text-xs font-mono text-gray-500">{t.booking.name_label}</label>
                                 <div className={`bg-black border rounded-lg p-3 transition-colors ${bookingErrors.name ? 'border-red-500/50 bg-red-500/5' : 'border-white/10'}`}>
