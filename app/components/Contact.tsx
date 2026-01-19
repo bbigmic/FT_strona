@@ -78,7 +78,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="text-base sm:text-lg font-bold text-white mb-1">Voice Channel</h3>
-                  <p className="text-sm sm:text-base text-gray-400 font-mono">+48 123 456 789</p>
+                  <p className="text-sm sm:text-base text-gray-400 font-mono">+48 502 600 739</p>
+                  <p className="text-sm sm:text-base text-gray-400 font-mono">+48 575 057 624</p>
                 </div>
               </div>
 
@@ -88,7 +89,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="text-base sm:text-lg font-bold text-white mb-1">Base Location</h3>
-                  <p className="text-sm sm:text-base text-gray-400">Warszawa, Polska</p>
+                  <p className="text-sm sm:text-base text-gray-400">Preston, Wielka Brytania</p>
                 </div>
               </div>
             </div>
