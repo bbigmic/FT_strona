@@ -1,5 +1,6 @@
 import { Terminal, Github, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -8,6 +9,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12 mb-12 sm:mb-16 md:mb-20">
           <div className="col-span-1 sm:col-span-2 lg:col-span-2 pr-0 sm:pr-8">
             <Link href="/" className="flex items-center space-x-2 text-white mb-4 sm:mb-6 group">
+              <div className="relative w-5 h-5 sm:w-6 sm:h-6 group-hover:opacity-90 transition-opacity">
+                <Image 
+                  src="/logo-wsp-edu-feliz-saturation.png" 
+                  alt="Feliz Logo" 
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 640px) 20px, 24px"
+                />
+              </div>
               <Terminal className="w-5 h-5 sm:w-6 sm:h-6 text-accent group-hover:text-white transition-colors" />
               <span className="font-mono text-base sm:text-lg font-bold">FELIZ<span className="text-accent">_TRADE</span></span>
             </Link>

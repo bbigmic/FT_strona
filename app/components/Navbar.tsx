@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, Terminal, Cpu } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
@@ -65,6 +66,15 @@ export default function Navbar() {
           
           {/* Logo Section */}
           <Link href="/" className="flex items-center space-x-2 sm:space-x-3 text-white group relative z-10">
+            <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-lg overflow-hidden group-hover:opacity-90 transition-opacity">
+              <Image 
+                src="/logo-wsp-edu-feliz-saturation.png" 
+                alt="Feliz Logo" 
+                fill
+                className="object-contain"
+                sizes="(max-width: 640px) 28px, 32px"
+              />
+            </div>
             <div className="relative flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white/5 border border-white/10 group-hover:border-accent/50 transition-colors overflow-hidden">
               <Terminal className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 group-hover:text-accent transition-colors" />
               <div className="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-100 transition-opacity" />

@@ -241,6 +241,12 @@ export default function Hero() {
         const u = cores[p.path[p.curr]];
         const v = cores[p.path[p.next]];
         
+        // Sprawdź czy węzły istnieją (mogą być nieprawidłowe po przebudowie topologii)
+        if (!u || !v || p.curr >= p.path.length || p.next >= p.path.length) {
+          packets.splice(i, 1);
+          continue;
+        }
+        
         const dx = v.x - u.x;
         const dy = v.y - u.y;
         const x = u.x + dx * p.t;
@@ -323,7 +329,10 @@ export default function Hero() {
         // Move
         p.t += p.speed * (dt / 16);
         if (p.t >= 1) {
-          cores[p.path[p.next]].activity = Math.min(1, cores[p.path[p.next]].activity + 0.8);
+          const nextCore = cores[p.path[p.next]];
+          if (nextCore) {
+            nextCore.activity = Math.min(1, nextCore.activity + 0.8);
+          }
           p.curr++;
           p.next++;
           p.t = 0;
