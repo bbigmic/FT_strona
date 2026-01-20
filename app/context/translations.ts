@@ -17,8 +17,11 @@ export const translations = {
       products_brands: "PRODUKTÓW, MAREK I DOŚWIADCZEŃ",
       latest_shots: "OSTATNIE REALIZACJE",
       headline_primary: "INTELIGENCJA",
-      headline_secondary: "ZAUTOMATYZOWANA"
-      ,tagline: "Budujemy autonomiczne systemy, które pracują za Ciebie."
+      headline_secondary: "ZAUTOMATYZOWANA",
+      tagline: "Budujemy autonomiczne systemy, które pracują za Ciebie.",
+      badge: "Nowa Generacja Automatyzacji",
+      cta_start: "Rozpocznij",
+      cta_explore: "Poznaj możliwości"
     },
     products: {
       available_solutions: "DOSTĘPNE ROZWIĄZANIA",
@@ -137,7 +140,100 @@ export const translations = {
       success_title: "REZERWACJA_POTWIERDZONA",
       success_msg: "Dziękujemy za umówienie spotkania. Potwierdzenie zostało wysłane na podany adres email.",
       meeting_date: "DATA_SPOTKANIA",
-      close: "ZAMKNIJ"
+      close: "ZAMKNIJ",
+      error_booking: "Wystąpił błąd podczas rezerwacji. Spróbuj ponownie.",
+      error_missing_identity: "MISSING_IDENTITY",
+      error_missing_entity: "MISSING_ENTITY",
+      error_missing_comm_id: "MISSING_COMM_ID",
+      error_invalid_protocol: "INVALID_PROTOCOL",
+      error_missing_voice_link: "MISSING_VOICE_LINK",
+      sending: "SENDING..."
+    },
+    about: {
+      title: "Dlaczego",
+      title_highlight: "Wybrać Nas",
+      description: "Jesteśmy zespołem inżynierów, którzy wierzą, że kod jest nowym językiem biznesu. Nie tylko budujemy oprogramowanie – projektujemy cyfrową infrastrukturę przyszłości.",
+      features: [
+        "Dedykowane podejście do każdego projektu",
+        "Najnowsze technologie (Next.js, AI, Cloud)",
+        "Wsparcie techniczne i utrzymanie",
+        "Skalowalne rozwiązania dla rosnących firm"
+      ],
+      terminal_user: "user@feliztrade:~",
+      terminal_user_mobile: "user@ft:~",
+      terminal_commands: "AVAILABLE_COMMANDS:",
+      terminal_command_explore: "run ./explore_services.exe",
+      terminal_command_contact: "run ./init_contact_protocol.sh",
+      terminal_ready: "ready_to_deploy.",
+      terminal_copied: "COPIED"
+    },
+    contact: {
+      title: "Rozpocznij",
+      title_connection: "Kontakt",
+      description: "Gotowy na wdrożenie nowych rozwiązań? Skontaktuj się z nami, aby rozpocząć proces transformacji.",
+      email_protocol: "Protokół Email",
+      voice_channel: "Kanał Głosowy",
+      base_location: "Lokalizacja",
+      location: "Preston, Wielka Brytania",
+      company_registry: "Rejestr Firm",
+      company_name: "FELIZ TRADE LTD",
+      company_number_label: "Numer firmy:",
+      company_number: "16008964",
+      form: {
+        identity_label: "Identity",
+        identity_placeholder: "Imię i Nazwisko",
+        communication_label: "Communication_ID",
+        communication_placeholder: "Email",
+        voice_label: "Voice_Link",
+        voice_placeholder: "Numer telefonu",
+        organization_label: "Organization_ID",
+        organization_placeholder: "Nazwa firmy (opcjonalnie)",
+        submit_button: "Poproś o kontakt",
+        submit_loading: "SENDING_DATA...",
+        source: "KONTAKT",
+        details: "Brak dodatkowych informacji"
+      },
+      success: {
+        title: "System Notification",
+        message: "Zgłoszenie zarejestrowane.",
+        description: "Dziękujemy za kontakt. Nasz zespół przeanalizuje Twój \"payload\" i odpowie w ciągu 24h.",
+        close: "Zamknij"
+      },
+      error: "Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie."
+    },
+    footer: {
+      tagline: "Tworzymy przyszłość poprzez inteligentną automatyzację.",
+      tagline_secondary: "Code is law. Efficiency is mandatory.",
+      system_title: "System",
+      company_title: "Firma",
+      system_links: {
+        ai_agents: "Agenci AI",
+        automation: "Automatyzacja",
+        saas_architecture: "Architektura SaaS",
+        web_development: "Rozwój Web"
+      },
+      company_links: {
+        about_us: "O nas",
+        careers: "Kariera",
+        blog: "Blog",
+        contact: "Kontakt"
+      },
+      copyright: "Feliz Trade Ltd. Wszystkie systemy operacyjne.",
+      privacy_policy: "Polityka_Prywatności",
+      terms_of_service: "Warunki_Usługi"
+    },
+    validation: {
+      missing_identity: "MISSING_IDENTITY",
+      missing_entity: "MISSING_ENTITY",
+      missing_comm_id: "MISSING_COMM_ID",
+      invalid_protocol: "INVALID_PROTOCOL",
+      missing_voice_link: "MISSING_VOICE_LINK",
+      empty_payload: "EMPTY_PAYLOAD"
+    },
+    errors: {
+      booking_error: "Wystąpił błąd podczas rezerwacji. Spróbuj ponownie.",
+      inquiry_error: "Wystąpił błąd podczas wysyłania zapytania. Spróbuj ponownie.",
+      form_error: "Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie."
     }
   },
   EN: {
@@ -158,8 +254,11 @@ export const translations = {
       products_brands: "PRODUCTS, BRANDS, AND EXPERIENCES",
       latest_shots: "LATEST SHOTS",
       headline_primary: "INTELLIGENCE",
-      headline_secondary: "AUTOMATED"
-      ,tagline: "We build autonomous systems that work for you."
+      headline_secondary: "AUTOMATED",
+      tagline: "We build autonomous systems that work for you.",
+      badge: "New Generation Automation",
+      cta_start: "Get Started",
+      cta_explore: "Explore Capabilities"
     },
     products: {
       available_solutions: "AVAILABLE SOLUTIONS",
@@ -278,7 +377,100 @@ export const translations = {
       success_title: "BOOKING_CONFIRMED",
       success_msg: "Thank you for booking a meeting. Confirmation has been sent to your email address.",
       meeting_date: "MEETING_DATE",
-      close: "CLOSE"
+      close: "CLOSE",
+      error_booking: "An error occurred while booking. Please try again.",
+      error_missing_identity: "MISSING_IDENTITY",
+      error_missing_entity: "MISSING_ENTITY",
+      error_missing_comm_id: "MISSING_COMM_ID",
+      error_invalid_protocol: "INVALID_PROTOCOL",
+      error_missing_voice_link: "MISSING_VOICE_LINK",
+      sending: "SENDING..."
+    },
+    about: {
+      title: "Why",
+      title_highlight: "Choose Us",
+      description: "We are a team of engineers who believe that code is the new language of business. We don't just build software – we design the digital infrastructure of the future.",
+      features: [
+        "Dedicated approach to each project",
+        "Latest technologies (Next.js, AI, Cloud)",
+        "Technical support and maintenance",
+        "Scalable solutions for growing businesses"
+      ],
+      terminal_user: "user@feliztrade:~",
+      terminal_user_mobile: "user@ft:~",
+      terminal_commands: "AVAILABLE_COMMANDS:",
+      terminal_command_explore: "run ./explore_services.exe",
+      terminal_command_contact: "run ./init_contact_protocol.sh",
+      terminal_ready: "ready_to_deploy.",
+      terminal_copied: "COPIED"
+    },
+    contact: {
+      title: "Initialize",
+      title_connection: "Connection",
+      description: "Ready to implement new solutions? Contact us to start the transformation process.",
+      email_protocol: "Email Protocol",
+      voice_channel: "Voice Channel",
+      base_location: "Base Location",
+      location: "Preston, United Kingdom",
+      company_registry: "Company Registry",
+      company_name: "FELIZ TRADE LTD",
+      company_number_label: "Company Number:",
+      company_number: "16008964",
+      form: {
+        identity_label: "Identity",
+        identity_placeholder: "Full Name",
+        communication_label: "Communication_ID",
+        communication_placeholder: "Email",
+        voice_label: "Voice_Link",
+        voice_placeholder: "Phone Number",
+        organization_label: "Organization_ID",
+        organization_placeholder: "Company Name (optional)",
+        submit_button: "Request Contact",
+        submit_loading: "SENDING_DATA...",
+        source: "CONTACT",
+        details: "No additional information"
+      },
+      success: {
+        title: "System Notification",
+        message: "Request registered.",
+        description: "Thank you for contacting us. Our team will analyze your \"payload\" and respond within 24h.",
+        close: "Close"
+      },
+      error: "An error occurred while submitting the form. Please try again."
+    },
+    footer: {
+      tagline: "We create the future through intelligent automation.",
+      tagline_secondary: "Code is law. Efficiency is mandatory.",
+      system_title: "System",
+      company_title: "Company",
+      system_links: {
+        ai_agents: "AI Agents",
+        automation: "Automation",
+        saas_architecture: "SaaS Architecture",
+        web_development: "Web Development"
+      },
+      company_links: {
+        about_us: "About Us",
+        careers: "Careers",
+        blog: "Blog",
+        contact: "Contact"
+      },
+      copyright: "Feliz Trade Ltd. All systems operational.",
+      privacy_policy: "Privacy_Policy",
+      terms_of_service: "Terms_of_Service"
+    },
+    validation: {
+      missing_identity: "MISSING_IDENTITY",
+      missing_entity: "MISSING_ENTITY",
+      missing_comm_id: "MISSING_COMM_ID",
+      invalid_protocol: "INVALID_PROTOCOL",
+      missing_voice_link: "MISSING_VOICE_LINK",
+      empty_payload: "EMPTY_PAYLOAD"
+    },
+    errors: {
+      booking_error: "An error occurred while booking. Please try again.",
+      inquiry_error: "An error occurred while sending the inquiry. Please try again.",
+      form_error: "An error occurred while submitting the form. Please try again."
     }
   }
 };

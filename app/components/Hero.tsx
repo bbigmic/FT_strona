@@ -9,6 +9,7 @@ import { useLanguage } from "../context/LanguageContext";
 export default function Hero() {
   const { t } = useLanguage();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
   const mouseRef = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
@@ -493,7 +494,14 @@ export default function Hero() {
     };
 
     const onMouse = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY };
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      // Convert viewport coordinates to canvas coordinates
+      mouseRef.current = { 
+        x: e.clientX - rect.left, 
+        y: e.clientY - rect.top 
+      };
     };
 
     const isInteractiveElement = (target: EventTarget | null) => {
@@ -509,7 +517,21 @@ export default function Hero() {
     const onMouseDown = (e: MouseEvent) => {
        if (isInteractiveElement(e.target)) return;
 
-       const { dist, index } = getCoreAt(e.clientX, e.clientY);
+       const canvas = canvasRef.current;
+       if (!canvas) return;
+       
+       const rect = canvas.getBoundingClientRect();
+       // Check if click is within the canvas bounds
+       if (e.clientX < rect.left || e.clientX > rect.right || 
+           e.clientY < rect.top || e.clientY > rect.bottom) {
+         return;
+       }
+       
+       // Convert viewport coordinates to canvas coordinates
+       const canvasX = e.clientX - rect.left;
+       const canvasY = e.clientY - rect.top;
+       
+       const { dist, index } = getCoreAt(canvasX, canvasY);
        
        // If hitting a processor
        if (dist < 1500 && index !== -1) {
@@ -533,7 +555,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col justify-center items-center pt-20 sm:pt-24 md:pt-28 overflow-hidden bg-black">
+    <section ref={sectionRef} id="hero" className="relative min-h-screen flex flex-col justify-center items-center pt-20 sm:pt-24 md:pt-28 overflow-hidden bg-black">
       <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center flex-1 flex flex-col justify-center">
@@ -550,7 +572,7 @@ export default function Hero() {
             className="mb-6 sm:mb-8"
           >
             <span className="inline-block px-3 sm:px-4 py-1 rounded-full border border-white/10 bg-white/5 text-[10px] sm:text-xs text-gray-300 font-medium tracking-wide backdrop-blur-md">
-              Nowa Generacja Automatyzacji
+              {t.hero.badge}
             </span>
           </motion.div>
 
@@ -585,14 +607,14 @@ export default function Hero() {
               href="#contact"
               className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-[#00f0ff] text-black rounded-xl text-sm sm:text-base md:text-lg font-mono font-bold uppercase tracking-widest hover:bg-[#00f0ff]/90 transition-all flex items-center justify-center border border-[#00f0ff]/20 shadow-[0_0_20px_rgba(0,240,255,0.3)]"
             >
-              Rozpocznij
+              {t.hero.cta_start}
               <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               href="#services"
               className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-[#00f0ff] rounded-xl text-sm sm:text-base md:text-lg font-mono font-bold uppercase tracking-widest transition-all flex items-center justify-center border border-[#00f0ff]/30 bg-black/40 hover:bg-[#00f0ff]/10 hover:shadow-[0_0_20px_rgba(0,240,255,0.2)]"
             >
-              Poznaj możliwości <ChevronRight className="ml-1 w-4 h-4 sm:w-5 sm:h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
+              {t.hero.cta_explore} <ChevronRight className="ml-1 w-4 h-4 sm:w-5 sm:h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
             </Link>
           </motion.div>
         </motion.div>

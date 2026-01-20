@@ -3,14 +3,10 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, Terminal, Copy, Trash2, Maximize2, Minimize2 } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function About() {
-  const features = [
-    "Dedykowane podejście do każdego projektu",
-    "Najnowsze technologie (Next.js, AI, Cloud)",
-    "Wsparcie techniczne i utrzymanie",
-    "Skalowalne rozwiązania dla rosnących firm"
-  ];
+  const { t } = useLanguage();
 
   // Terminal Logic
   const [logs, setLogs] = useState<string[]>([]);
@@ -120,8 +116,8 @@ export default function About() {
                 </div>
                 <div className="flex-1 text-center text-[10px] sm:text-xs text-gray-500 font-mono flex items-center justify-center gap-2">
                   <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-accent animate-pulse"></span>
-                  <span className="hidden sm:inline">user@feliztrade:~</span>
-                  <span className="sm:hidden">user@ft:~</span>
+                  <span className="hidden sm:inline">{t.about.terminal_user}</span>
+                  <span className="sm:hidden">{t.about.terminal_user_mobile}</span>
                 </div>
                 <div className="flex items-center gap-1 sm:gap-2">
                   <button
@@ -158,7 +154,7 @@ export default function About() {
                   >
                     {isFullscreen ? <Minimize2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : <Maximize2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
                   </button>
-                  {copied && <span className="text-[9px] sm:text-[10px] font-mono text-accent hidden sm:inline">COPIED</span>}
+                  {copied && <span className="text-[9px] sm:text-[10px] font-mono text-accent hidden sm:inline">{t.about.terminal_copied}</span>}
                 </div>
               </div>
               <div className={`p-4 sm:p-6 text-left font-mono text-xs sm:text-sm md:text-base ${isFullscreen ? "flex-1 overflow-auto" : "h-64 sm:h-80 md:h-96 overflow-hidden"} flex flex-col`}>
@@ -186,7 +182,7 @@ export default function About() {
                       animate={{ opacity: 1 }}
                       className="text-emerald-500 font-bold mt-2"
                     >
-                      {"> ready_to_deploy."}
+                      {"> "}{t.about.terminal_ready}
                       {!showCommands && <span className="terminal-cursor text-accent ml-1"></span>}
                     </motion.div>
                   )}
@@ -198,21 +194,21 @@ export default function About() {
                       transition={{ duration: 0.5 }}
                       className="mt-4 space-y-2"
                     >
-                      <div className="text-gray-500 text-xs mb-2">AVAILABLE_COMMANDS:</div>
+                      <div className="text-gray-500 text-xs mb-2">{t.about.terminal_commands}</div>
                       <div className="flex flex-col gap-2">
                         <button 
                           onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
                           className="text-left group flex items-center gap-2 hover:bg-white/5 p-2 -mx-2 rounded transition-colors"
                         >
                           <span className="text-accent">{">"}</span>
-                          <span className="text-gray-300 group-hover:text-white transition-colors">run ./explore_services.exe</span>
+                          <span className="text-gray-300 group-hover:text-white transition-colors">{t.about.terminal_command_explore}</span>
                         </button>
                         <button 
                           onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                           className="text-left group flex items-center gap-2 hover:bg-white/5 p-2 -mx-2 rounded transition-colors"
                         >
                           <span className="text-accent">{">"}</span>
-                          <span className="text-gray-300 group-hover:text-white transition-colors">run ./init_contact_protocol.sh</span>
+                          <span className="text-gray-300 group-hover:text-white transition-colors">{t.about.terminal_command_contact}</span>
                         </button>
                       </div>
                     </motion.div>
@@ -230,14 +226,14 @@ export default function About() {
             className="lg:w-1/2 w-full"
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 text-white tracking-tight">
-              Why <span className="text-gray-500">Choose Us<span className="text-accent animate-pulse">?</span></span>
+              {t.about.title} <span className="text-gray-500">{t.about.title_highlight}<span className="text-accent animate-pulse">?</span></span>
             </h2>
             <p className="text-lg sm:text-xl text-gray-400 mb-8 sm:mb-10 leading-relaxed">
-              Jesteśmy zespołem inżynierów, którzy wierzą, że kod jest nowym językiem biznesu. Nie tylko budujemy oprogramowanie – projektujemy cyfrową infrastrukturę przyszłości.
+              {t.about.description}
             </p>
 
             <div className="space-y-4 sm:space-y-6">
-              {features.map((item, index) => (
+              {t.about.features.map((item, index) => (
                 <div key={index} className="flex items-center space-x-3 sm:space-x-4 group">
                   <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors shrink-0">
                      <CheckCircle2 className="text-accent w-3.5 h-3.5 sm:w-4 sm:h-4" />

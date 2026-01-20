@@ -1,10 +1,12 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Phone, MapPin, Send, ArrowRight, CheckCircle, X } from "lucide-react";
+import { Mail, Phone, MapPin, Send, ArrowRight, CheckCircle, X, Building } from "lucide-react";
 import { useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Contact() {
+  const { t } = useLanguage();
   const [formState, setFormState] = useState({ name: "", email: "", phone: "", company: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -25,8 +27,8 @@ export default function Contact() {
           email: formState.email,
           phone: formState.phone,
           company: formState.company || formState.name,
-          source: 'KONTAKT',
-          details: 'Brak dodatkowych informacji',
+          source: t.contact.form.source,
+          details: t.contact.form.details,
         }),
       });
 
@@ -40,7 +42,7 @@ export default function Contact() {
     } catch (error) {
       console.error('Error submitting form:', error);
       setIsSubmitting(false);
-      alert('Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.');
+      alert(t.contact.error);
     }
   };
 
@@ -55,10 +57,10 @@ export default function Contact() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 text-white tracking-tight">
-              Initialize <br/> <span className="text-gray-500">Connection<span className="text-accent animate-pulse">.</span></span>
+              {t.contact.title} <br/> <span className="text-gray-500">{t.contact.title_connection}<span className="text-accent animate-pulse">.</span></span>
             </h2>
             <p className="text-lg sm:text-xl text-gray-400 mb-8 sm:mb-10 lg:mb-12">
-              Gotowy na wdrożenie nowych rozwiązań? Skontaktuj się z nami, aby rozpocząć proces transformacji.
+              {t.contact.description}
             </p>
 
             <div className="space-y-6 sm:space-y-8">
@@ -67,7 +69,7 @@ export default function Contact() {
                   <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:text-accent transition-colors" />
                 </div>
                 <div>
-                  <h3 className="text-base sm:text-lg font-bold text-white mb-1">Email Protocol</h3>
+                  <h3 className="text-base sm:text-lg font-bold text-white mb-1">{t.contact.email_protocol}</h3>
                   <p className="text-sm sm:text-base text-gray-400 font-mono break-all">contact@feliztradeltd.com</p>
                 </div>
               </div>
@@ -77,7 +79,7 @@ export default function Contact() {
                   <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:text-accent transition-colors" />
                 </div>
                 <div>
-                  <h3 className="text-base sm:text-lg font-bold text-white mb-1">Voice Channel</h3>
+                  <h3 className="text-base sm:text-lg font-bold text-white mb-1">{t.contact.voice_channel}</h3>
                   <p className="text-sm sm:text-base text-gray-400 font-mono">+48 502 600 739</p>
                   <p className="text-sm sm:text-base text-gray-400 font-mono">+48 575 057 624</p>
                 </div>
@@ -88,8 +90,19 @@ export default function Contact() {
                   <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:text-accent transition-colors" />
                 </div>
                 <div>
-                  <h3 className="text-base sm:text-lg font-bold text-white mb-1">Base Location</h3>
-                  <p className="text-sm sm:text-base text-gray-400">Preston, Wielka Brytania</p>
+                  <h3 className="text-base sm:text-lg font-bold text-white mb-1">{t.contact.base_location}</h3>
+                  <p className="text-sm sm:text-base text-gray-400">{t.contact.location}</p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4 sm:space-x-6 group">
+                <div className="p-3 sm:p-4 bg-[#111] rounded-xl sm:rounded-2xl border border-white/10 group-hover:border-accent/50 transition-colors shrink-0">
+                  <Building className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:text-accent transition-colors" />
+                </div>
+                <div>
+                  <h3 className="text-base sm:text-lg font-bold text-white mb-1">{t.contact.company_registry}</h3>
+                  <p className="text-sm sm:text-base text-gray-400 font-mono">{t.contact.company_name}</p>
+                  <p className="text-sm sm:text-base text-gray-400 font-mono">{t.contact.company_number_label} {t.contact.company_number}</p>
                 </div>
               </div>
             </div>
@@ -110,7 +123,7 @@ export default function Contact() {
 
               <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8 relative z-10">
                 <div className="space-y-2">
-                  <label className="text-xs font-mono text-gray-500 uppercase tracking-widest ml-1">Identity</label>
+                  <label className="text-xs font-mono text-gray-500 uppercase tracking-widest ml-1">{t.contact.form.identity_label}</label>
                   <input
                     type="text"
                     required
@@ -118,11 +131,11 @@ export default function Contact() {
                     value={formState.name}
                     onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                     className="w-full bg-black/50 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder:text-gray-700"
-                    placeholder="Imię i Nazwisko"
+                    placeholder={t.contact.form.identity_placeholder}
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-xs font-mono text-gray-500 uppercase tracking-widest ml-1">Communication_ID</label>
+                  <label className="text-xs font-mono text-gray-500 uppercase tracking-widest ml-1">{t.contact.form.communication_label}</label>
                   <input
                     type="email"
                     required
@@ -130,11 +143,11 @@ export default function Contact() {
                     value={formState.email}
                     onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                     className="w-full bg-black/50 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder:text-gray-700"
-                    placeholder="Email"
+                    placeholder={t.contact.form.communication_placeholder}
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-xs font-mono text-gray-500 uppercase tracking-widest ml-1">Voice_Link</label>
+                  <label className="text-xs font-mono text-gray-500 uppercase tracking-widest ml-1">{t.contact.form.voice_label}</label>
                   <input
                     type="tel"
                     required
@@ -142,18 +155,18 @@ export default function Contact() {
                     value={formState.phone}
                     onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
                     className="w-full bg-black/50 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder:text-gray-700"
-                    placeholder="Numer telefonu"
+                    placeholder={t.contact.form.voice_placeholder}
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-xs font-mono text-gray-500 uppercase tracking-widest ml-1">Organization_ID</label>
+                  <label className="text-xs font-mono text-gray-500 uppercase tracking-widest ml-1">{t.contact.form.organization_label}</label>
                   <input
                     type="text"
                     autoComplete="organization"
                     value={formState.company}
                     onChange={(e) => setFormState({ ...formState, company: e.target.value })}
                     className="w-full bg-black/50 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder:text-gray-700"
-                    placeholder="Nazwa firmy (opcjonalnie)"
+                    placeholder={t.contact.form.organization_placeholder}
                   />
                 </div>
                 <button
@@ -162,10 +175,10 @@ export default function Contact() {
                   className="w-full bg-white text-black font-bold py-4 sm:py-5 rounded-xl hover:bg-gray-200 transition-all flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed group text-sm sm:text-base"
                 >
                   {isSubmitting ? (
-                    <span className="font-mono text-xs sm:text-sm">SENDING_DATA...</span>
+                    <span className="font-mono text-xs sm:text-sm">{t.contact.form.submit_loading}</span>
                   ) : (
                     <>
-                      <span>Poproś o kontakt</span>
+                      <span>{t.contact.form.submit_button}</span>
                       <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                     </>
                   )}
@@ -190,12 +203,12 @@ export default function Contact() {
                       <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-accent" />
                     </motion.div>
                     
-                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 tracking-tight">System Notification</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 tracking-tight">{t.contact.success.title}</h3>
                     <div className="w-10 sm:w-12 h-1 bg-accent rounded-full mb-4 sm:mb-6"></div>
                     
-                    <p className="text-gray-300 mb-2 text-base sm:text-lg">Zgłoszenie zarejestrowane.</p>
+                    <p className="text-gray-300 mb-2 text-base sm:text-lg">{t.contact.success.message}</p>
                     <p className="text-gray-500 text-xs sm:text-sm mb-6 sm:mb-8 max-w-xs mx-auto">
-                      Dziękujemy za kontakt. Nasz zespół przeanalizuje Twój &quot;payload&quot; i odpowie w ciągu 24h.
+                      {t.contact.success.description}
                     </p>
                     
                     <button
@@ -203,7 +216,7 @@ export default function Contact() {
                       className="px-6 sm:px-8 py-2.5 sm:py-3 bg-white/10 hover:bg-white/20 border border-white/10 rounded-full text-white transition-all font-mono text-xs sm:text-sm uppercase tracking-widest flex items-center gap-2"
                     >
                       <X className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                      Zamknij
+                      {t.contact.success.close}
                     </button>
                   </motion.div>
                 )}

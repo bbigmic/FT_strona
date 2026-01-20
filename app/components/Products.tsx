@@ -390,14 +390,14 @@ export default function Products() {
                                     if (isSubmittingBooking) return;
                                     
                                     const newErrors: { [key: string]: string } = {};
-                                    if (!bookingForm.name.trim()) newErrors.name = "MISSING_IDENTITY";
-                                    if (!bookingForm.company.trim()) newErrors.company = "MISSING_ENTITY";
+                                    if (!bookingForm.name.trim()) newErrors.name = t.validation.missing_identity;
+                                    if (!bookingForm.company.trim()) newErrors.company = t.validation.missing_entity;
                                     if (!bookingForm.email.trim()) {
-                                        newErrors.email = "MISSING_COMM_ID";
+                                        newErrors.email = t.validation.missing_comm_id;
                                     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(bookingForm.email)) {
-                                        newErrors.email = "INVALID_PROTOCOL";
+                                        newErrors.email = t.validation.invalid_protocol;
                                     }
-                                    if (!bookingForm.phone.trim()) newErrors.phone = "MISSING_VOICE_LINK";
+                                    if (!bookingForm.phone.trim()) newErrors.phone = t.validation.missing_voice_link;
                                     
                                     setBookingErrors(newErrors);
                                     
@@ -460,13 +460,13 @@ export default function Products() {
                                     } catch (error) {
                                         console.error('Error submitting booking:', error);
                                         setIsSubmittingBooking(false);
-                                        alert('Wystąpił błąd podczas rezerwacji. Spróbuj ponownie.');
+                                        alert(t.errors.booking_error);
                                     }
                                 }}
                                 disabled={isSubmittingBooking}
                                 className="px-6 py-3 bg-accent text-black font-mono font-bold rounded-lg hover:bg-accent/90 transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                {isSubmittingBooking ? "SENDING..." : t.booking.submit} <Send className="w-4 h-4" />
+                                {isSubmittingBooking ? t.booking.sending : t.booking.submit} <Send className="w-4 h-4" />
                             </button>
                         </div>
                     </motion.div>

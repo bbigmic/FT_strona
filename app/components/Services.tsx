@@ -398,15 +398,15 @@ export default function Services() {
                       if (isSubmittingInquiry) return;
                       
                       const newErrors: { [key: string]: string } = {};
-                      if (!inquiryForm.name.trim()) newErrors.name = "MISSING_IDENTITY";
+                      if (!inquiryForm.name.trim()) newErrors.name = t.validation.missing_identity;
                       if (!inquiryForm.email.trim()) {
-                         newErrors.email = "MISSING_COMM_ID";
+                         newErrors.email = t.validation.missing_comm_id;
                        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inquiryForm.email)) {
-                         newErrors.email = "INVALID_PROTOCOL";
+                         newErrors.email = t.validation.invalid_protocol;
                        }
-                       if (!inquiryForm.phone.trim()) newErrors.phone = "MISSING_VOICE_LINK";
-                       if (!inquiryForm.company.trim()) newErrors.company = "MISSING_ENTITY";
-                       if (!inquiryForm.message.trim()) newErrors.message = "EMPTY_PAYLOAD";
+                       if (!inquiryForm.phone.trim()) newErrors.phone = t.validation.missing_voice_link;
+                       if (!inquiryForm.company.trim()) newErrors.company = t.validation.missing_entity;
+                       if (!inquiryForm.message.trim()) newErrors.message = t.validation.empty_payload;
                       
                       setErrors(newErrors);
                       
@@ -457,7 +457,7 @@ export default function Services() {
                       } catch (error) {
                         console.error('Error submitting inquiry:', error);
                         setIsSubmittingInquiry(false);
-                        alert('Wystąpił błąd podczas wysyłania zapytania. Spróbuj ponownie.');
+                        alert(t.errors.inquiry_error);
                       }
                     }}
                     className="space-y-6"
@@ -583,7 +583,7 @@ export default function Services() {
                       className="w-full bg-accent text-black font-mono font-bold uppercase tracking-widest py-4 rounded-xl hover:bg-accent/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 border border-accent/20 shadow-[0_0_20px_rgba(34,197,94,0.15)]"
                     >
                       {isSubmittingInquiry ? (
-                        <span className="font-mono tracking-widest">SENDING...</span>
+                        <span className="font-mono tracking-widest">{t.booking.sending}</span>
                       ) : (
                         <>
                           <span className="tracking-wider">{t.services.inquiry_form.submit}</span>
